@@ -9,11 +9,11 @@ def _main_iter(data: dict):
 
     if not response.content:
         return
-
+    print(response.content)
     server_response = json.loads(response.content)
-    print("dfssssssss", server_response)
     msg = F"Request: http://{server_response.get('req')}"
-    if server_response.get("req", '').split('/')[0] not in data["possible"]:
+    if server_response.get("req", '')\
+            .replace(':', '/').split('/')[0] not in data["possible"]:
         print(F"{msg}: FAILED")
         return
     requests.get(F"http://{server_response.get('req')}")
