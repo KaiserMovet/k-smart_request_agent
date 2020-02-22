@@ -33,7 +33,9 @@ def _load_config():
 
 
 def main():
+    print("Loading configuration...")
     data = _load_config()
+    print("Starting main loop...")
     while True:
         _main_iter(data)
         time.sleep(data["interval"])
